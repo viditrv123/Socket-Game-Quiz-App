@@ -7,5 +7,10 @@ export default defineConfig({
   plugins: [react()],
   define:{
     'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API)
+  },
+  build:{
+    commonjsOptions:{
+      include:[/lib-cjs/,/node_modules/]
+    }
   }
 })
