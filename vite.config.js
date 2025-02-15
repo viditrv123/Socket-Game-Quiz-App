@@ -6,7 +6,7 @@ import 'dotenv/config'
 export default defineConfig({
   plugins: [react()],
   define:{
-    'process.env.VITE_BACKEND_API':process.env.VITE_BACKEND_API,
-    'console.log': '() => {}'
+    'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API),
+    'console.log': JSON.stringify(() => {})
   }
 })
