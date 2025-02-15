@@ -8,9 +8,12 @@ export default defineConfig({
   define:{
     'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API)
   },
-  build:{
-    commonjsOptions:{
-      include:[/lib-cjs/,/node_modules/]
+  optimizeDeps: {
+    include: ['linked-dep']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/]
     }
   }
 })
