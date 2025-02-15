@@ -3,9 +3,7 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./components/Home";
-import Login from "./components/Login"; // Assuming this is a custom component for routing protection
-import ProtectedRoute from "./hoc/ProtectedRoutes";
-import GameContext from "./context/GameContext";
+import Login from "./components/Login";
 
 const router = createBrowserRouter([
   {
@@ -19,13 +17,9 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const [gameData, setGameData] = React.useState({});
-
   return (
     <React.StrictMode>
-      <GameContext.Provider value={{ gameData, setGameData }}>
-        <RouterProvider router={router} />
-      </GameContext.Provider>
+      <RouterProvider router={router} />
     </React.StrictMode>
   );
 };

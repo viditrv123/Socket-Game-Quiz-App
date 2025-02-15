@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, ButtonGroup, Typography } from "@mui/material";
 import NavBar from "./NavBar";
 import io from "socket.io-client";
-import { useNavigate } from "react-router-dom";
-import GameContext from "../context/GameContext";
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -13,8 +11,6 @@ const Home = () => {
   const [timer, setTimer] = useState(10);
   const [intervalId, setIntervalId] = useState(null);
 
-  const navigate = useNavigate();
-  const { gameData, setGameData } = useContext(GameContext);
   console.log(import.meta.env.VITE_BACKEND_API);
   console.log(import.meta.env);
   console.log(process.env);
