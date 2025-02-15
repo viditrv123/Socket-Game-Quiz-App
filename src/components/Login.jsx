@@ -18,7 +18,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const login = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
 
     if (!email || !password) {
       setError("Please enter both email and password.");
