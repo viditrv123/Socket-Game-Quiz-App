@@ -4,6 +4,7 @@ import 'dotenv/config'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base:'/',
   plugins: [react()],
   define:{
     'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API)
