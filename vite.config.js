@@ -15,5 +15,12 @@ export default defineConfig({
     commonjsOptions: {
       include: [/linked-dep/, /node_modules/]
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "/index.html",
+      "permanent": true
+    }
+  ]
 })
