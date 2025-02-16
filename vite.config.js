@@ -5,7 +5,7 @@ import 'dotenv/config'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Socket-Game-App/',
+  base: '/',
   define:{
     'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API)
   },
