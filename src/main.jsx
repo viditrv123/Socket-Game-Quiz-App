@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/login", // URL convention is typically lowercase for routes
+    path: "/login",
     element: <Login />,
   },
 ]);

@@ -49,79 +49,141 @@ function LoginPage() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          mt: 8,
-          border: "1px solid #ccc",
-          padding: "2rem",
-          borderRadius: "8px",
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          Login
-        </Typography>
-        <form onSubmit={login} style={{ width: "100%" }}>
-          {/* Email Field */}
-          <TextField
-            label="Email Address"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          {/* Password Field */}
-          <TextField
-            label="Password"
-            type="password"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          {error && (
-            <Typography color="error" variant="body2" sx={{ mt: 1 }}>
-              {error}
-            </Typography>
-          )}
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={() => login()}
-          >
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100wh",
+        backgroundColor: "#121212",
+        margin: 0,
+        paddingTop: 8,
+      }}
+    >
+      <Container component="main" maxWidth="xs">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            border: "1px solid #333", // Dark border for the form container
+            padding: "2rem",
+            borderRadius: "8px",
+            justifyContent: "center",
+            paddingTop: 8,
+            backgroundColor: "#1e1e1e", // Dark background color for the box
+          }}
+        >
+          <Typography component="h1" variant="h5" color="white">
             Login
-          </Button>
+          </Typography>
+          <form onSubmit={login} style={{ width: "100%" }}>
+            {/* Email Field */}
+            <TextField
+              label="Email Address"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{
+                backgroundColor: "#333", // Dark background for input
+                color: "#fff", // White text
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#444", // Dark border color by default
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#FF4081", // Border color on hover
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#FF4081", // Border color when focused
+                  },
+                },
+                "& .MuiFormLabel-root": {
+                  color: "#FF4081", // Label color in dark mode
+                },
+                "& .Mui-focused .MuiFormLabel-root": {
+                  color: "#FF4081", // Label color when focused
+                },
+              }}
+            />
 
-          <Grid2 container>
-            <Grid2 item xs>
-              <Typography variant="body2" color="textSecondary">
-                Don't have an account?{" "}
-                <Button
-                  variant="text"
-                  color="primary"
-                  onClick={() => navigate("/register")}
-                >
-                  Register
-                </Button>
+            {/* Password Field */}
+            <TextField
+              label="Password"
+              type="password"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{
+                backgroundColor: "#333",
+                color: "#fff",
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#444",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "rgb(29, 218, 248)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "rgb(29, 218, 248)",
+                  },
+                },
+                "& .MuiFormLabel-root": {
+                  color: "rgb(29, 218, 248)",
+                },
+                "& .Mui-focused .MuiFormLabel-root": {
+                  color: "rgb(29, 218, 248)",
+                },
+              }}
+            />
+
+            {error && (
+              <Typography color="error" variant="body2" sx={{ mt: 1 }}>
+                {error}
               </Typography>
+            )}
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                mt: 3,
+                mb: 2,
+                backgroundColor: " #FF4081",
+                "&:hover": {
+                  backgroundColor: " #FF80AB",
+                },
+              }}
+              onClick={() => login()}
+            >
+              Login
+            </Button>
+
+            <Grid2 container>
+              <Grid2 item xs>
+                <Typography variant="body2" color="white">
+                  Don't have an account?{" "}
+                  <Button
+                    variant="text"
+                    color="primary"
+                    onClick={() => navigate("/register")}
+                    sx={{ color: "#FF4081" }}
+                  >
+                    Register
+                  </Button>
+                </Typography>
+              </Grid2>
             </Grid2>
-          </Grid2>
-        </form>
-      </Box>
-    </Container>
+          </form>
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
