@@ -21,7 +21,7 @@ function LoginPage() {
     e?.preventDefault();
 
     if (!email || !password) {
-      setError("Please enter both email and password.");
+      setError("Please enter both username and password.");
       return;
     }
 
@@ -78,7 +78,7 @@ function LoginPage() {
           <form onSubmit={login} style={{ width: "100%" }}>
             {/* Email Field */}
             <TextField
-              label="Email Address"
+              label="UserName"
               variant="outlined"
               margin="normal"
               required
