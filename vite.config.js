@@ -5,6 +5,7 @@ import 'dotenv/config'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/Socket-Game-App/',
   define:{
     'process.env.VITE_BACKEND_API':JSON.stringify(process.env.VITE_BACKEND_API)
   },
@@ -16,11 +17,4 @@ export default defineConfig({
       include: [/linked-dep/, /node_modules/]
     }
   },
-  "redirects": [
-    {
-      "source": "/:path*",
-      "destination": "/index.html",
-      "permanent": true
-    }
-  ]
 })
