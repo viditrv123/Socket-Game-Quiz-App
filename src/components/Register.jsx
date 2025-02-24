@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function LoginPage() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,25 +26,32 @@ function LoginPage() {
     }
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_API}/user/login`,
-        {
-          userName: email,
-          password,
-        }
-      );
-      if (response.data) {
-        const user = response.data.user;
+      if (email && password) {
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_API}/user/createUser`,
+          {
+            userName: email,
+            password,
+          }
+        );
+        if (response.data) {
+          const user = response.data.user;
+          console.log(response);
 
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", response.data.token);
-        navigate("/");
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
+        } else {
+          setError(
+            response.data.message || "Registeration failed. Please try again."
+          );
+        }
       } else {
-        setError(response.data.message || "Login failed. Please try again.");
+        setError("Please enter both userName and Password");
       }
     } catch (error) {
       setError("An error occurred during login. Please try again.");
-      console.error("Login Error: ", error);
+      console.error("Register Error: ", error);
     }
   };
 
@@ -73,9 +80,9 @@ function LoginPage() {
           }}
         >
           <Typography component="h1" variant="h5" color="white">
-            Login
+            Register
           </Typography>
-          <form onSubmit={login} style={{ width: "100%" }}>
+          <form onSubmit={login} style={{ width: "100%", color: "black" }}>
             {/* Email Field */}
             <TextField
               label="UserName"
@@ -119,12 +126,11 @@ function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               sx={{
-                "& .MuiInputBase-input": {
-                  color: "black !important",
-                },
                 "& .MuiOutlinedInput-root": {
+                  borderColor: "#444",
                   backgroundColor: "white",
-                  color: "black !important",
+                  color: "black",
+
                   "&:hover fieldset": {
                     borderColor: "#FF4081",
                   },
@@ -133,10 +139,10 @@ function LoginPage() {
                   },
                 },
                 "& .MuiFormLabel-root": {
-                  color: "#FF4081", // Label color
+                  color: "#FF4081",
                 },
                 "& .Mui-focused .MuiFormLabel-root": {
-                  color: "#FF4081", // Label color when focused
+                  color: "#FF4081",
                 },
               }}
             />
@@ -161,20 +167,20 @@ function LoginPage() {
               }}
               onClick={() => login()}
             >
-              Login
+              Register
             </Button>
 
             <Grid2 container>
               <Grid2 item xs>
                 <Typography variant="body2" color="white">
-                  Don't have an account?{" "}
+                  Already have an account?{" "}
                   <Button
                     variant="text"
                     color="primary"
-                    onClick={() => navigate("/register")}
+                    onClick={() => navigate("/login")}
                     sx={{ color: "#FF4081" }}
                   >
-                    Register
+                    Login
                   </Button>
                 </Typography>
               </Grid2>
@@ -186,4 +192,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Register;
