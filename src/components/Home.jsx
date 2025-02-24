@@ -87,6 +87,12 @@ const Home = () => {
     }
   };
 
+  const handleQuitGame = () => {
+    if (socket && user) {
+      socket.emit("QUIT_GAME", { userId: user.id });
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -161,6 +167,7 @@ const Home = () => {
                   backgroundColor: "#555",
                 },
               }}
+              onClick={handleQuitGame}
             >
               Quit Game
             </Button>
