@@ -83,6 +83,7 @@ const Home = () => {
 
   const handlePlayGame = () => {
     if (socket && user) {
+      clearInterval(intervalId);
       socket.emit("FIND_GAME", { userId: user.id });
     }
   };
