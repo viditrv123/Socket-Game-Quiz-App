@@ -119,16 +119,72 @@ const Home = () => {
         }}
       >
         {!user ? (
-          <Typography
-            sx={{
-              fontSize: 32,
-              color: "#FFCFEF",
-              textAlign: "center",
-              marginBottom: 2,
-            }}
-          >
-            Hello! Welcome to Fun Game
-          </Typography>
+          <>
+            {" "}
+            <Typography
+              sx={{
+                fontSize: 32,
+                color: "#FFCFEF",
+                textAlign: "center",
+                marginBottom: 2,
+              }}
+            >
+              Hello! Welcome to Fun Game
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 18,
+                color: "#FFCFEF",
+                textAlign: "center",
+                marginBottom: 4,
+                fontWeight: "bold",
+              }}
+            >
+              Instructions:
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 16,
+                color: "#FFCFEF",
+                textAlign: "center",
+                marginBottom: 2,
+              }}
+            >
+              1. Login / Register to the account on 2 separate devices.
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: 16,
+                color: "#FFCFEF",
+                textAlign: "center",
+                marginBottom: 4,
+              }}
+            >
+              2. Click "Find game" on both devices to start playing.
+            </Typography>
+          </>
+        ) : questionIndex === 0 ? (
+          <>
+            <Button
+              sx={{
+                backgroundColor: "#333",
+                color: "#fff",
+                fontWeight: "bold",
+                borderRadius: "8px",
+                padding: "10px 20px",
+                textTransform: "none",
+                "&:hover": {
+                  backgroundColor: "#444",
+                },
+                "&:active": {
+                  backgroundColor: "#555",
+                },
+              }}
+              onClick={handlePlayGame}
+            >
+              Play Game
+            </Button>
+          </>
         ) : questionIndex > 0 ? (
           <>
             <Typography sx={{ fontSize: 24, marginBottom: 2 }}>
@@ -171,27 +227,7 @@ const Home = () => {
               Quit Game
             </Button>
           </>
-        ) : (
-          <Button
-            sx={{
-              backgroundColor: "#333",
-              color: "#fff",
-              fontWeight: "bold",
-              borderRadius: "8px",
-              padding: "10px 20px",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#444",
-              },
-              "&:active": {
-                backgroundColor: "#555",
-              },
-            }}
-            onClick={handlePlayGame}
-          >
-            Play Game
-          </Button>
-        )}
+        ) : null}
       </Box>
     </Box>
   );
