@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AvatarUtils from "../utils/Avatar";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -84,6 +85,7 @@ function NavBar() {
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       <Avatar
+                        {...AvatarUtils.stringAvatar(user.userName)}
                         alt={user.userName}
                         src={user.avatarUrl}
                         sx={{ bgcolor: "#FF4081" }}

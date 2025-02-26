@@ -12,8 +12,6 @@ const Home = () => {
   const [intervalId, setIntervalId] = useState(null);
 
   console.log(import.meta.env.VITE_BACKEND_API);
-  console.log(import.meta.env);
-  console.log(process.env);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
